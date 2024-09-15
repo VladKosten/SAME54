@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "cwd": "${workspaceRoot}",
+            "executable": "PIcon/build/Debug/PiCon.elf",
+            "name": "Debug with OpenOCD",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "configFiles": ["${workspaceRoot}/atsame53.cfg"],
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "raw",
+            "overrideResetCommands": [
+                "monitor reset halt",
+                "monitor reset init",
+                "monitor reset halt"
+            ]
+        },
+
+    ]
+}

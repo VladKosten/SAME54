@@ -1,0 +1,3 @@
+add_library(AtmelStartConfig INTERFACE)
+
+target_include_directories(AtmelStartConfig INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})

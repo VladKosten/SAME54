@@ -1,0 +1,33 @@
+{
+    "cmake.sourceDirectory": "/home/kosten/Projects/PiCon/PIcon",
+    "cmake.configureOnOpen": true,
+    "cmake.generator": "Ninja",
+    "cortex-debug.variableUseNaturalFormat": false,
+    "cSpell.words": [
+        "sctructure"
+    ],
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "files.associations": {
+        "pitalk_client_nal.h": "c",
+        "pitalk_player_client_nal_pdu.h": "c",
+        "pitalk_player_client_nal.h": "c",
+        "pitalk_player_client.h": "c",
+        "stdbool.h": "c",
+        "stddef.h": "c",
+        "pitalk_cfg.h": "c",
+        "pitalk_client_osal_port.h": "c",
+        "pi_talk_player_client_startup.h": "c",
+        "pi_talk_client_startup_cfg.h": "c",
+        "atmel_start.h": "c",
+        "pitalk_player_client_startup_test.h": "c",
+        "msp_key_registry.h": "c",
+        "pitalk_control_client_startup_cfg.h": "c",
+        "pitalk_control_client.h": "c",
+        "pitalk_control_client_node.h": "c",
+        "pitalk_control_client_startup.h": "c",
+        "pitalk_control_client_startup_test.h": "c",
+        "pitalk_player_client_job.h": "c",
+        "pitalk_player_client_osal.h": "c",
+        "pi_link_cyclio_startup_test.h": "c"
+    }
+}

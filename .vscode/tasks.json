@@ -1,0 +1,71 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Flash with OpenOCD",
+			"type": "shell",
+			"command": "openocd -f atsame53.cfg -c \"program PIcon/build/${input:ReleaseType}/PiCon.elf verify reset exit \" ",
+			"options": {
+				"cwd": "${workspaceRoot}"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "Configure CMake ",
+			"type": "shell",
+			"command": "cmake -G Ninja -B ./build/${input:ReleaseType} -S . -DCMAKE_BUILD_TYPE=${input:ReleaseType}",
+			"options": {
+				"cwd": "${workspaceRoot}"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+		},
+		{
+			"label" : "Build with Ninja",
+			"type": "shell",
+			"command": "cmake --build ./build/${input:ReleaseType}",
+			"options": {
+				"cwd": "${workspaceRoot}"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+		}
+	],
+
+	"inputs": [
+		{
+			"type": "pickString",
+			"id": "ReleaseType",
+			"description": "What type of release ?",
+			"options": [
+				"Release",
+				"Debug",
+				"MinSizeRel",
+				"RelWithDebInfo",
+				"ReleaseForBootloader"
+			],
+			"default": "Debug"
+		},
+
+		{
+			"type": "pickString",
+			"id": "BuildForBootloader",
+			"description": "Build for bootloader SamBa ?",
+			"options": [
+			  "Yes",
+			  "No"
+			],
+			"default": "PItalk"
+		  },
+
+
+	]
+}

@@ -1,0 +1,14 @@
+
+*.d
+*.o
+*.eep
+*.srec
+*.elf
+*.hex
+*.bin
+*.lss
+*.map
+build
+Debug
+Release
+.cache
