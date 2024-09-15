@@ -58,11 +58,11 @@ target_link_options(CompileOptions INTERFACE -T${LINKER_SCRIPT_FLASH}           
 include(AtmelStartFramework.cmake)
 
 # Add the subdirectories to the project.
-#add_subdirectory(Application)
+add_subdirectory(App)
 add_subdirectory(config)
 add_subdirectory(Device)
+add_subdirectory(Middleware)
 #add_subdirectory(Driver)
-#add_subdirectory(Middleware)
 
 
 # Add the Atmel Start library to the project.
@@ -77,7 +77,8 @@ target_link_libraries(AtmelStart PUBLIC AtmelStartFramework)
 # Add the main library to the project.
 add_library(Main STATIC ${CMAKE_CURRENT_SOURCE_DIR}/main.c)
 
-target_link_libraries(Main PRIVATE App)
+target_link_libraries(Main PRIVATE App
+                           PRIVATE AtmelStart)
 
 # Add the executable target to the project.
 add_executable(${CMAKE_PROJECT_NAME} ${STARTUP_SCRIPT})

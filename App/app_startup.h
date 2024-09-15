@@ -34,7 +34,7 @@ extern "C"{
 /**
 * \brief Using of an external supervisor/watchdog
 */
-#define APP_STARTUP_USE_EXT_WDT                 1
+#define APP_STARTUP_USE_EXT_WDT                 0
 
 /**
  * \brief External watchdog restart period
@@ -52,7 +52,7 @@ typedef enum
     APP_STARTUP_NO_ERR = 0,     // No errors
     APP_STARTUP_INIT_ERR,       // Some init error (no recources for startup)
     APP_STARTUP_EXEC_ERR        // The application execution has been terminated with an error
-    
+
 } AppStartupErr_t;
 
 

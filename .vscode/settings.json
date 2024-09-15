@@ -28,6 +28,7 @@
         "pitalk_control_client_startup_test.h": "c",
         "pitalk_player_client_job.h": "c",
         "pitalk_player_client_osal.h": "c",
-        "pi_link_cyclio_startup_test.h": "c"
+        "pi_link_cyclio_startup_test.h": "c",
+        "app_startup.h": "c"
     }
 }

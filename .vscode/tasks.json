@@ -4,7 +4,7 @@
 		{
 			"label": "Flash with OpenOCD",
 			"type": "shell",
-			"command": "openocd -f atsame53.cfg -c \"program PIcon/build/${input:ReleaseType}/PiCon.elf verify reset exit \" ",
+			"command": "openocd -f atsame53.cfg -c \"program build/${input:ReleaseType}/SAME54.elf verify reset exit \" ",
 			"options": {
 				"cwd": "${workspaceRoot}"
 			},

@@ -32,14 +32,6 @@
             }
         },
         {
-            "name": "ReleaseForBootloader",
-            "inherits": "default",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release",
-                "BUILD_FOR_BOOTLOADER": "YES"
-            }
-        },
-        {
             "name": "MinSizeRel",
             "inherits": "default",
             "cacheVariables": {
@@ -59,10 +51,6 @@
         {
             "name": "Release",
             "configurePreset": "Release"
-        },
-        {
-            "name": "ReleaseForBootloader",
-            "configurePreset": "ReleaseForBootloader"
         },
         {
             "name": "MinSizeRel",

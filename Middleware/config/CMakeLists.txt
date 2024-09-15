@@ -6,62 +6,10 @@ target_link_libraries(freertos_config INTERFACE AtmelStart)
 
 target_compile_definitions(freertos_config  INTERFACE projCOVERAGE_TEST=0)
 
-
-add_library(MiddlewareConfig INTERFACE)
-
-target_include_directories(MiddlewareConfig INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
-
-target_link_libraries(MiddlewareConfig INTERFACE freertos_kernel
-                                       INTERFACE AtmelStart)
-
-
-add_library(PiLinkConfig INTERFACE)
-
-target_include_directories(PiLinkConfig INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
-
-target_link_libraries(PiLinkConfig INTERFACE freertos_kernel
-                                        INTERFACE AtmelStart)
-
-add_library(FatFsConfig INTERFACE)
-
-target_include_directories(FatFsConfig INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
-
-target_link_libraries(FatFsConfig INTERFACE freertos_kernel
-                                        INTERFACE AtmelStart)
-
-add_library(ModbusServerConfig INTERFACE)
-
-target_include_directories(ModbusServerConfig INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
-
-target_link_libraries(ModbusServerConfig INTERFACE freertos_kernel
-                                        INTERFACE AtmelStart)
-
-add_library(ModbusClientConfig INTERFACE)
-
-target_include_directories(ModbusClientConfig INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
-
-target_link_libraries(ModbusClientConfig INTERFACE freertos_kernel
-                                         INTERFACE AtmelStart)
-
-
-add_library(PiTalkClientConfig INTERFACE)
-
-target_include_directories(PiTalkClientConfig INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
-
-target_link_libraries(PiTalkClientConfig INTERFACE freertos_kernel
-                                        INTERFACE AtmelStart)
-
-
-add_library(PiTalkPlayerClientConfig INTERFACE)
-
-target_include_directories(PiTalkPlayerClientConfig INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
-
-target_link_libraries(PiTalkPlayerClientConfig INTERFACE freertos_kernel
-                                               INTERFACE AtmelStart)
-
-add_library(PiTalkControlConfig INTERFACE)
-
-target_include_directories(PiTalkControlConfig INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
-
-target_link_libraries(PiTalkControlConfig INTERFACE freertos_kernel
-                                            INTERFACE AtmelStart)
+# Select the heap port
+set(FREERTOS_HEAP "4" CACHE STRING "" FORCE)
+message(STATUS "Setting FREERTOS_HEAP=${FREERTOS_HEAP}")
+# Select the native compile PORT
+set(FREERTOS_PORT "GCC_ARM_CM4F" CACHE STRING "" FORCE)
+message(STATUS "UNIX, setting FREERTOS_PORT=${GCC_ARM_CM4F}")
+# And make it available

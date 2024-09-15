@@ -2,7 +2,7 @@
     "configurations": [
         {
             "cwd": "${workspaceRoot}",
-            "executable": "PIcon/build/Debug/PiCon.elf",
+            "executable": "build/Debug/SAME54.elf",
             "name": "Debug with OpenOCD",
             "request": "launch",
             "type": "cortex-debug",

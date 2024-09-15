@@ -15,37 +15,9 @@ void system_init(void)
 {
 	init_mcu();
 
-	// GPIO on PA27
+	// GPIO on PC18
 
-	gpio_set_pin_level(PA27,
-	                   // <y> Initial level
-	                   // <id> pad_initial_level
-	                   // <false"> Low
-	                   // <true"> High
-	                   true);
-
-	// Set pin direction to output
-	gpio_set_pin_direction(PA27, GPIO_DIRECTION_OUT);
-
-	gpio_set_pin_function(PA27, GPIO_PIN_FUNCTION_OFF);
-
-	// GPIO on PB14
-
-	gpio_set_pin_level(LED1,
-	                   // <y> Initial level
-	                   // <id> pad_initial_level
-	                   // <false"> Low
-	                   // <true"> High
-	                   true);
-
-	// Set pin direction to output
-	gpio_set_pin_direction(LED1, GPIO_DIRECTION_OUT);
-
-	gpio_set_pin_function(LED1, GPIO_PIN_FUNCTION_OFF);
-
-	// GPIO on PB15
-
-	gpio_set_pin_level(LED2,
+	gpio_set_pin_level(LED0,
 	                   // <y> Initial level
 	                   // <id> pad_initial_level
 	                   // <false"> Low
@@ -53,7 +25,7 @@ void system_init(void)
 	                   false);
 
 	// Set pin direction to output
-	gpio_set_pin_direction(LED2, GPIO_DIRECTION_OUT);
+	gpio_set_pin_direction(LED0, GPIO_DIRECTION_OUT);
 
-	gpio_set_pin_function(LED2, GPIO_PIN_FUNCTION_OFF);
+	gpio_set_pin_function(LED0, GPIO_PIN_FUNCTION_OFF);
 }

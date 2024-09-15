@@ -35,26 +35,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "semphr.h"
-#include "i2c_driver.h"
-#include "gpio_extender_start.h"
-#include "pi_link_client_startup.h"
-#include "sd_mmc_startup.h"
-#include "fatfs_startup.h"
-#include "w25qxx_flashdriver_startup.h"
-#include "littlefs_filesystem_startup.h"
-#include "mb_server_startup.h"
-#include "mb_client_startup.h"
-#include "mb_poll.h"
-#include "pitalk_client_startup.h"
-#include "pitalk_player_client_startup.h"
-#include "pitalk_control_client_startup.h"
-#include "pi_link_cyclio_startup.h"
-#include "pi_link_cyclio_startup_test.h"
-#include "user_app_startup.h"
 
-#include "pi_link_cyclio_startup_test.h"
-#include "pitalk_player_client_startup_test.h"
-#include "pitalk_control_client_startup_test.h"
 
 //=====================================================================[ INTERNAL MACRO DEFENITIONS ]===============================================================================
 
@@ -142,129 +123,6 @@ static void appStartupTask(void* param)
         /* Application startup delay */
         vTaskDelay(pdMS_TO_TICKS(APP_STARTUP_DELAY_MS));
 
-        /* I2C driver init */
-        status = I2C_DriverInit();
-        if(status)
-        {
-            /* Set the status word flag */
-            ASSERT(0);
-        };
-
-        /* Front panel GPIO extender INIT */
-        status = GpioExtenderStart();
-        if(status)
-        {
-            /* Set the status word flag */
-            ASSERT(0);
-        };
-
-        /* SD/MMC startup */
-        // sd_mmc_stack_init();
-
-        /* FatFs startup */
-        //status = FatFsStart();
-        // ASSERT(!status);
-
-        /* Start Flash Chip (Backup Flash) driver */
-        // status = FlashDriverStartup();
-        // if(status)
-        // {
-        //     /* Set the status word flag */
-        //     ASSERT(0);
-        // }
-
-        /* Start File System */
-        // status = FileSystemStartup();
-        // if(status)
-        // {
-        //     /* Set the status word flag */
-        //     ASSERT(0);
-        // }
-
-        /* Modbus server startup */
-        status = MbServerStartup();
-        if(status)
-        {
-            /* Set the status word flag */
-            ASSERT(0);
-        };
-
-        /* Modbus client startup */
-        status = MbClientStartup();
-        if(status)
-        {
-            /* Set the status word flag */
-            ASSERT(0);
-        };
-
-        /* PiLink client startup */
-        status = PiLinkClientStartup();
-        if(status)
-        {
-            /* Set the status word flag */
-            ASSERT(0);
-        };
-
-        /* PiLink CYCLIO startup */
-        status = PiLinkCyclioStartup();
-        if(status)
-        {
-            /* Set the status word flag */
-            ASSERT(0);
-        };
-
-        /* PiTalk client startup */
-        status = PiTalkClientStartup();
-        if(status)
-        {
-            /* Set the status word flag */
-            ASSERT(0);
-        };
-
-        /* PiTalk player client startup */
-        status = PiTalkPlayerClientStartup();
-        if(status)
-        {
-            /* Set the status word flag */
-            ASSERT(0);
-        };
-
-        /* PiTalk control client startup */
-        status = PiTalkControlClientStartup();
-        if(status)
-        {
-            /* Set the status word flag */
-            ASSERT(0);
-        };
-
-        /* User program */
-        status = MbPollInit();
-        if(status)
-        {
-            /* Set the status word flag */
-            ASSERT(0);
-        };
-
-        /* Start the User Application */
-        status = UserAppStartup();
-        if(status)
-        {
-            /* Set the status word flag */
-            ASSERT(0);
-        };
-
-
-        /* PiLink CYCLIO startup test */
-        // status = PIlinkCyclioStartupTestRun();
-        // ASSERT(0);
-
-        /* PiTalk player client startup test */
-        // status = PiTalkPlayerClientTestStartup();
-        // ASSERT(0);
-
-        /* PiTalk control client startup test */
-        // status = PiTalkControlClientTestStartup();
-    //    ASSERT(0);
 
         /* --------------- DO NOT TOUCH IT ! ----------------*/
         /* Set the Application init completion flag */
@@ -318,6 +176,15 @@ void vApplicationTickHook(void)
     CRITICAL_SECTION_ENTER();
     AppStartupGlobalTimeTickCount++;
     CRITICAL_SECTION_LEAVE();
+
+    /* Togle the LED */
+    static uint32_t ledToggleCounter = 0;
+    if(++ledToggleCounter >= 1000)
+    {
+        ledToggleCounter = 0;
+        gpio_toggle_pin_level(LED0);
+    }
+
 }
 
 
