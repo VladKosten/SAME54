@@ -158,7 +158,7 @@
 // <0xF=>1000000us
 // <id> xosc1_arch_startup
 #ifndef CONF_XOSC1_STARTUP
-#define CONF_XOSC1_STARTUP 2
+#define CONF_XOSC1_STARTUP 0
 #endif
 
 // <q> Clock Switch Back
@@ -253,7 +253,7 @@
 // <i> Select the clock source
 // <id> dfll_ref_clock
 #ifndef CONF_DFLL_GCLK
-#define CONF_DFLL_GCLK GCLK_PCHCTRL_GEN_GCLK3_Val
+#define CONF_DFLL_GCLK GCLK_PCHCTRL_GEN_GCLK1_Val
 #endif
 
 // <h> Digital Frequency Locked Loop Control
@@ -404,7 +404,7 @@
 // <i> Select the clock source.
 // <id> fdpll0_ref_clock
 #ifndef CONF_FDPLL0_GCLK
-#define CONF_FDPLL0_GCLK GCLK_GENCTRL_SRC_XOSC1
+#define CONF_FDPLL0_GCLK GCLK_PCHCTRL_GEN_GCLK1_Val
 #endif
 
 // <h> Digital Phase Locked Loop Control
@@ -426,7 +426,7 @@
 // <i> Indicates whether Run in Standby is enabled or not
 // <id> fdpll0_arch_runstdby
 #ifndef CONF_FDPLL0_RUNSTDBY
-#define CONF_FDPLL0_RUNSTDBY 0
+#define CONF_FDPLL0_RUNSTDBY 1
 #endif
 
 // <o> Loop Divider Ratio Fractional Part <0x0-0x1F>
@@ -440,21 +440,21 @@
 // <i> Value of LDR is calculated using Fclk_dpll=Fckr*(LDR+1+LDRFRAC/32) formula as given in datasheet. This value is directly written in to DPLLRATIO register
 // <id> fdpll0_ldr
 #ifndef CONF_FDPLL0_LDR
-#define CONF_FDPLL0_LDR 0xf
+#define CONF_FDPLL0_LDR 0x27
 #endif
 
 // <o> Clock Divider <0x0-0x7FF>
 // <i> This Clock divider is only for XOSC clock input to DPLL
 // <id> fdpll0_clock_div
 #ifndef CONF_FDPLL0_DIV
-#define CONF_FDPLL0_DIV 0x1
+#define CONF_FDPLL0_DIV 0x0
 #endif
 
 // <q> DCO Filter Enable
 // <i> Indicates whether DCO Filter Enable is enabled or not
 // <id> fdpll0_arch_dcoen
 #ifndef CONF_FDPLL0_DCOEN
-#define CONF_FDPLL0_DCOEN 0
+#define CONF_FDPLL0_DCOEN 1
 #endif
 
 // <o> Sigma-Delta DCO Filter Selection <0x0-0x7>
@@ -467,7 +467,7 @@
 // <i> Indicates whether Lock Bypass is enabled or not
 // <id> fdpll0_arch_lbypass
 #ifndef CONF_FDPLL0_LBYPASS
-#define CONF_FDPLL0_LBYPASS 0
+#define CONF_FDPLL0_LBYPASS 1
 #endif
 
 // <o> Lock Time
@@ -488,7 +488,7 @@
 // <0x3=>XOSC1 clock reference
 // <id> fdpll0_arch_refclk
 #ifndef CONF_FDPLL0_REFCLK
-#define CONF_FDPLL0_REFCLK 0x3
+#define CONF_FDPLL0_REFCLK 0x0
 #endif
 
 // <q> Wake Up Fast
@@ -532,7 +532,7 @@
 // <i> Select the clock source.
 // <id> fdpll1_ref_clock
 #ifndef CONF_FDPLL1_GCLK
-#define CONF_FDPLL1_GCLK GCLK_GENCTRL_SRC_XOSC32K
+#define CONF_FDPLL1_GCLK GCLK_GENCTRL_SRC_XOSC1
 #endif
 
 // <h> Digital Phase Locked Loop Control

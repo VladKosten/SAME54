@@ -21,6 +21,14 @@ extern "C" {
 #include <hal_io.h>
 #include <hal_sleep.h>
 
+#include <hal_usart_async.h>
+
+extern struct usart_async_descriptor SERVICE_PORT;
+
+void SERVICE_PORT_PORT_init(void);
+void SERVICE_PORT_CLOCK_init(void);
+void SERVICE_PORT_init(void);
+
 /**
  * \brief Perform system initialization, initialize pins and clocks for
  * peripherals
