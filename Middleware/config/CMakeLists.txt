@@ -13,3 +13,10 @@ message(STATUS "Setting FREERTOS_HEAP=${FREERTOS_HEAP}")
 set(FREERTOS_PORT "GCC_ARM_CM4F" CACHE STRING "" FORCE)
 message(STATUS "UNIX, setting FREERTOS_PORT=${GCC_ARM_CM4F}")
 # And make it available
+
+add_library(UShellConfig INTERFACE)
+
+target_include_directories(UShellConfig SYSTEM INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+
+target_link_libraries(UShellConfig    INTERFACE freertos_kernel
+                                      INTERFACE AtmelStart)

@@ -2,5 +2,6 @@
 add_subdirectory(config)
 add_subdirectory(FreeRTOS-Kernel)
 
+add_subdirectory(uShell)
 target_link_libraries(freertos_kernel PUBLIC CompileOptions)
 target_link_libraries(freertos_kernel_port PUBLIC CompileOptions)

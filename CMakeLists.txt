@@ -23,7 +23,9 @@ set(STARTUP_SCRIPT ${PROJECT_SOURCE_DIR}/Device/startup_same54.c)
 add_library(CompileOptions INTERFACE)
 
 target_compile_options(CompileOptions INTERFACE -Wall                           # the compiler will output warnings for common programming errors
-                                                # -Wextra                       # enables some extra warning flags that are not enabled by -Wall
+                                                #-Wextra                       # enables some extra warning flags that are not enabled by -Wall
+                                                -Wdiscarded-qualifiers           # warn if a type qualifier is discarded
+                                                -Wint-conversion                 # warn for implicit conversions that may alter a value
                                                 # -Wshadow                        # warn whenever a local variable or type declaration shadows another variable, parameter, type, class member
                                                 #-Wdouble-promotion              # warn if a float is implicitly promoted to a double
                                                 # -Wformat-truncation           # check calls to printf and scanf
@@ -53,6 +55,7 @@ target_link_options(CompileOptions INTERFACE -T${LINKER_SCRIPT_FLASH}           
                                              -Wl,--print-memory-usage
                                              $<$<CONFIG:ReleaseForBootloader>: -Wl,--section-start=.text=0x2000>
                                              )            # print memory usage
+
 
 # Include the Atmel Start framework.
 include(AtmelStartFramework.cmake)

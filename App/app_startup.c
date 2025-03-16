@@ -22,7 +22,6 @@
  * \bug       Bug report may be placed here...
  */
 
-
 //===============================================================================[ INCLUDE ]=======================================================================================
 
 #include "app_startup.h"
@@ -30,18 +29,15 @@
 #include <stdint.h>
 #include <stddef.h>
 
-
 /* Include your application-specific modules here !*/
 #include "FreeRTOS.h"
 #include "task.h"
 #include "semphr.h"
-
+#include "ushell_startup.h"
 
 //=====================================================================[ INTERNAL MACRO DEFENITIONS ]===============================================================================
 
-
 //====================================================================[ INTERNAL DATA TYPES DEFINITIONS ]===========================================================================
-
 
 //===============================================================[ INTERNAL FUNCTIONS AND OBJECTS DECLARATION ]=====================================================================
 
@@ -50,7 +46,7 @@
  * \note  The task MUST have the highest available priority lvl because its initializes other application tasks
  *        NO TASK SHOULD BE PERFORMED UNTIL THIS TASK IS COMPLETE
  */
-static void appStartupTask(void *taskParamPtr);
+static void appStartupTask(void* taskParamPtr);
 
 /**
  * \brief RTOS object: task handle
@@ -65,9 +61,9 @@ static bool AppInitFlag = false;
 /**
  * \brief Events global counters
  */
-volatile uint64_t AppStartupGlobalTimeTickCount   = 0;  // Global system timer tick counter
-volatile uint32_t AppStartupIdleCount             = 0;  // Global low priority idle cycles counter
-volatile uint16_t AppStartupWdtExtKickCounter     = 0;  // Global watchdog reset counter
+volatile uint64_t AppStartupGlobalTimeTickCount = 0;    // Global system timer tick counter
+volatile uint32_t AppStartupIdleCount = 0;              // Global low priority idle cycles counter
+volatile uint16_t AppStartupWdtExtKickCounter = 0;      // Global watchdog reset counter
 
 //=======================================================================[PUBLIC INTERFACE FUNCTIONS]==============================================================================
 
@@ -81,19 +77,18 @@ AppStartupErr_t AppStartup(void)
 {
     /* Creating of the startup task */
     TaskHandle_t appStartupTaskHandle = NULL;
-    (void)appStartupTaskHandle;
-    BaseType_t startupTaskCreateErr = xTaskCreate
-    (   appStartupTask,                                 // Startup task function
-        "APP_START",                                    // Startup task name
-        APP_STARTUP_TASK_STACK_SIZE,                    // Startup task stack size
-        NULL,                                           // Startup task params = nothing;
-        APP_STARTUP_TASK_PRIORITY,                      // Startup task priority = set the highest priority
-        &appStartupTaskHandle                           // Startup task handle
+    (void) appStartupTaskHandle;
+    BaseType_t startupTaskCreateErr = xTaskCreate(appStartupTask,                 // Startup task function
+                                                  "APP_START",                    // Startup task name
+                                                  APP_STARTUP_TASK_STACK_SIZE,    // Startup task stack size
+                                                  NULL,                           // Startup task params = nothing;
+                                                  APP_STARTUP_TASK_PRIORITY,      // Startup task priority = set the highest priority
+                                                  &appStartupTaskHandle           // Startup task handle
     );
     ASSERT(appStartupTaskHandle);
 
     /* Checking */
-    if(startupTaskCreateErr != pdPASS)
+    if (startupTaskCreateErr != pdPASS)
     {
         return APP_STARTUP_INIT_ERR;    // Exit: Error: Application init error
     }
@@ -101,7 +96,7 @@ AppStartupErr_t AppStartup(void)
     /* Start the RTOS */
     vTaskStartScheduler();
 
-    return APP_STARTUP_EXEC_ERR;	// Exit: The application execution has been terminated with an error
+    return APP_STARTUP_EXEC_ERR;    // Exit: The application execution has been terminated with an error
 }
 
 //============================================================================[PRIVATE FUNCTIONS]===================================================================================
@@ -115,14 +110,19 @@ AppStartupErr_t AppStartup(void)
 static void appStartupTask(void* param)
 {
     int16_t status = 0;
-    (void)status;
-    (void)param;
+    (void) status;
+    (void) param;
 
-    while(1)
+    while (1)
     {
         /* Application startup delay */
         vTaskDelay(pdMS_TO_TICKS(APP_STARTUP_DELAY_MS));
 
+        status = UShellStartup();
+        if (status != 0)
+        {
+            ASSERT(0);
+        }
 
         /* --------------- DO NOT TOUCH IT ! ----------------*/
         /* Set the Application init completion flag */
@@ -146,11 +146,10 @@ static void appStartupTask(void* param)
  * \param[out] no;
  * \return     no.
  */
-void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
+void vApplicationStackOverflowHook(TaskHandle_t xTask, char* pcTaskName)
 {
     ASSERT(0);
 }
-
 
 /**
  * \brief      Application tick hook
@@ -166,7 +165,7 @@ void vApplicationTickHook(void)
     AppStartupWdtExtKickCounter %= APP_EXTERNAL_WDT_RESTART_TIME_MS / 2;
 
     /* reset watchdog timer */
-    if(!AppStartupWdtExtKickCounter)
+    if (!AppStartupWdtExtKickCounter)
     {
         WdtExternalKick();
     }
@@ -179,14 +178,12 @@ void vApplicationTickHook(void)
 
     /* Togle the LED */
     static uint32_t ledToggleCounter = 0;
-    if(++ledToggleCounter >= 1000)
+    if (++ledToggleCounter >= 1000)
     {
         ledToggleCounter = 0;
         gpio_toggle_pin_level(LED0);
     }
-
 }
-
 
 /**
  * \brief      This function calls when RTOS processing IDLE task
@@ -199,7 +196,6 @@ void vApplicationIdleHook(void)
     AppStartupIdleCount++;
 }
 
-
 /**
  * \brief      Application malloc failed hook.
  *             In other words this function is handling memory allocation errors from the RTOS heap
@@ -209,23 +205,22 @@ void vApplicationIdleHook(void)
  */
 void vApplicationMallocFailedHook(void)
 {
-    ASSERT(0); // Insert assert to catch such case
+    ASSERT(0);    // Insert assert to catch such case
 }
-
 
 /* configSUPPORT_STATIC_ALLOCATION is set to 1, so the application must provide an
 implementation of vApplicationGetIdleTaskMemory() to provide the memory that is
 used by the Idle task. */
 #if (configSUPPORT_STATIC_ALLOCATION == 1)
-void vApplicationGetIdleTaskMemory(StaticTask_t **ppxIdleTaskTCBBuffer,
-                                   StackType_t **ppxIdleTaskStackBuffer,
-                                   uint32_t *pulIdleTaskStackSize)
+void vApplicationGetIdleTaskMemory(StaticTask_t** ppxIdleTaskTCBBuffer,
+                                   StackType_t** ppxIdleTaskStackBuffer,
+                                   uint32_t* pulIdleTaskStackSize)
 {
     /* If the buffers to be provided to the Idle task are declared inside this
     function then they must be declared static - otherwise they will be allocated on
     the stack and so not exists after this function exits. */
     static StaticTask_t xIdleTaskTCB;
-    static StackType_t uxIdleTaskStack[ configMINIMAL_STACK_SIZE ];
+    static StackType_t uxIdleTaskStack [configMINIMAL_STACK_SIZE];
 
     /* Pass out a pointer to the StaticTask_t structure in which the Idle task's
     state will be stored. */
@@ -241,21 +236,19 @@ void vApplicationGetIdleTaskMemory(StaticTask_t **ppxIdleTaskTCBBuffer,
 }
 #endif
 
-
 /* configSUPPORT_STATIC_ALLOCATION and configUSE_TIMERS are both set to 1, so the
 application must provide an implementation of vApplicationGetTimerTaskMemory()
 to provide the memory that is used by the Timer service task. */
-#if ((configSUPPORT_STATIC_ALLOCATION == 1) && (configUSE_TIMERS == 1) )
-void vApplicationGetTimerTaskMemory(StaticTask_t **ppxTimerTaskTCBBuffer,
-                                    StackType_t **ppxTimerTaskStackBuffer,
-                                    uint32_t *pulTimerTaskStackSize)
+#if ((configSUPPORT_STATIC_ALLOCATION == 1) && (configUSE_TIMERS == 1))
+void vApplicationGetTimerTaskMemory(StaticTask_t** ppxTimerTaskTCBBuffer,
+                                    StackType_t** ppxTimerTaskStackBuffer,
+                                    uint32_t* pulTimerTaskStackSize)
 {
     /* If the buffers to be provided to the Timer task are declared inside this
     function then they must be declared static - otherwise they will be allocated on
     the stack and so not exists after this function exits. */
     static StaticTask_t xTimerTaskTCB;
-    static StackType_t uxTimerTaskSpi_link_client_startup
-    *ppxTimerTaskTCBBuffer = &xTimerTaskTCB;
+    static StackType_t uxTimerTaskSpi_link_client_startup* ppxTimerTaskTCBBuffer = &xTimerTaskTCB;
 
     /* Pass out the array that will be used as the Timer task's stack. */
     *ppxTimerTaskStackBuffer = uxTimerTaskStack;

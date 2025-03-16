@@ -1,3 +1,6 @@
 [submodule "Middleware/FreeRTOS-Kernel"]
 	path = Middleware/FreeRTOS-Kernel
 	url = git@github.com:FreeRTOS/FreeRTOS-Kernel.git
+[submodule "Middleware/uShell"]
+	path = Middleware/uShell
+	url = git@github.com:VladKosten/uShell.git

@@ -1,5 +1,5 @@
 {
-    "cmake.sourceDirectory": "/home/kosten/Projects/PiCon/PIcon",
+    "cmake.sourceDirectory": "/home/kosten/Projects/SAME54-1",
     "cmake.configureOnOpen": true,
     "cmake.generator": "Ninja",
     "cortex-debug.variableUseNaturalFormat": false,
@@ -29,6 +29,15 @@
         "pitalk_player_client_job.h": "c",
         "pitalk_player_client_osal.h": "c",
         "pi_link_cyclio_startup_test.h": "c",
-        "app_startup.h": "c"
+        "app_startup.h": "c",
+        "functional": "c",
+        "stdint.h": "c",
+        "ostream": "c",
+        "random": "c",
+        "ranges": "c",
+        "ushell_startup.h": "c",
+        "ushell.h": "c",
+        "ushell_startup_cfg.h": "c",
+        "ushell_hal_asf.h": "c"
     }
 }
