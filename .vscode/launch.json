@@ -7,7 +7,9 @@
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "openocd",
-            "configFiles": ["${workspaceRoot}/atsame53.cfg"],
+            "configFiles": [
+                "${workspaceRoot}/atsame53.cfg"
+            ],
             "runToEntryPoint": "main",
             "showDevDebugOutput": "raw",
             "overrideResetCommands": [
@@ -16,6 +18,5 @@
                 "monitor reset halt"
             ]
         },
-
     ]
 }

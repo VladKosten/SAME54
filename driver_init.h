@@ -21,6 +21,19 @@ extern "C" {
 #include <hal_io.h>
 #include <hal_sleep.h>
 
+#include <hal_calendar.h>
+#include <hal_usart_async.h>
+
+extern struct calendar_descriptor    CALENDAR_0;
+extern struct usart_async_descriptor EDBG_COM;
+
+void CALENDAR_0_CLOCK_init(void);
+void CALENDAR_0_init(void);
+
+void EDBG_COM_PORT_init(void);
+void EDBG_COM_CLOCK_init(void);
+void EDBG_COM_init(void);
+
 /**
  * \brief Perform system initialization, initialize pins and clocks for
  * peripherals

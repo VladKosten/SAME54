@@ -15,7 +15,7 @@
 // <i> Indicates whether Priority Level 0 is enabled or not
 // <id> dmac_lvlen0
 #ifndef CONF_DMAC_LVLEN0
-#define CONF_DMAC_LVLEN0 1
+#define CONF_DMAC_LVLEN0 0
 #endif
 
 // <o> Level 0 Round-Robin Arbitration
@@ -36,7 +36,7 @@
 // <i> Indicates whether Priority Level 1 is enabled or not
 // <id> dmac_lvlen1
 #ifndef CONF_DMAC_LVLEN1
-#define CONF_DMAC_LVLEN1 1
+#define CONF_DMAC_LVLEN1 0
 #endif
 
 // <o> Level 1 Round-Robin Arbitration
@@ -57,7 +57,7 @@
 // <i> Indicates whether Priority Level 2 is enabled or not
 // <id> dmac_lvlen2
 #ifndef CONF_DMAC_LVLEN2
-#define CONF_DMAC_LVLEN2 1
+#define CONF_DMAC_LVLEN2 0
 #endif
 
 // <o> Level 2 Round-Robin Arbitration
@@ -78,7 +78,7 @@
 // <i> Indicates whether Priority Level 3 is enabled or not
 // <id> dmac_lvlen3
 #ifndef CONF_DMAC_LVLEN3
-#define CONF_DMAC_LVLEN3 1
+#define CONF_DMAC_LVLEN3 0
 #endif
 
 // <o> Level 3 Round-Robin Arbitration

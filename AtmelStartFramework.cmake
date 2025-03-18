@@ -18,7 +18,9 @@ target_include_directories(AtmelStartFramework  PUBLIC ${CMAKE_CURRENT_SOURCE_DI
                                                 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/hpl/pm
                                                 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/hpl/tc
                                                 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/hpl/port
-                                                PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/hpl/wdt)
+                                                PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/hpl/wdt
+                                                PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/hpl/sercom
+                                                PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/hpl/rtc)
 
 target_link_libraries(AtmelStartFramework PUBLIC AtmelStartConfig
                                           PUBLIC Device
