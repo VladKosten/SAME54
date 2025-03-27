@@ -1,6 +1,5 @@
 
 add_subdirectory(config)
-add_subdirectory(ushell_startup)
 
 add_library(App STATIC app_startup.c)
 

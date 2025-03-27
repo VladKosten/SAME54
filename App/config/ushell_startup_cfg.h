@@ -16,25 +16,12 @@ extern "C" {
 /**
  * \brief Matrix Kbd assert definition
  */
-// #define USHELL_STARTUP_ASSERT(cond) ASSERT((cond))
+#define USHELL_STARTUP_ASSERT(cond) ASSERT((cond))
 
 /* Define the OSAL port type */
-
-/**
- * \brief FreeRTOS OSAL port
- * \note Uncomment this line to use the FreeRTOS OSAL port
- *       Recommended use CMake to define this option
- */
 #define USHELL_STARTUP_OSAL_PORT_FREERTOS
 
 /* Define the HAL port type */
-
-/**
- * \brief ATMEL HAL port
- * \note Uncomment this line to use the ATMEL HAL port
- *      Recommended use CMake to define this option
- * \todo Add the ATMEL HAL port implementation
- */
 #define USHELL_STARTUP_HAL_PORT_ATMEL
 
 /* Include port-specific headers: */
@@ -47,18 +34,17 @@ extern "C" {
 /* Include HAL port-specific headers here: */
 #ifdef USHELL_STARTUP_HAL_PORT_ATMEL
     #include "ushell_hal_asf.h"
-    #include "atmel_start.h"
 #endif
-
-/* Include other port-specific headers here: */
-// ... //
 
 /**
  * \brief uShell name by default
  */
-#ifndef USHELL_STARTUP_NAME
-    #define USHELL_STARTUP_NAME "uShell"
-#endif
+#define USHELL_STARTUP_NAME          "uShell"
+
+/**
+ * @brief uShell VCP name by default
+ */
+#define USHELL_VCP_NAME              "uShellVcp"
 
 #define USHELL_STARTUP_AUTH_IS_EN    false
 #define USHELL_STARTUP_ECHO_IS_EN    false
@@ -72,8 +58,9 @@ extern "C" {
     #ifdef USHELL_STARTUP_OSAL_PORT_FREERTOS
 
         /* For startup */
-        #define USHELL_STARTUP_OSAL_PORT_TYPE UShellOsalFreertos_s
-        #define USHELL_STARTUP_OSAL_PORT_NAME "uShellOsal"
+        #define USHELL_STARTUP_OSAL_PORT_TYPE     UShellOsalFreertos_s
+        #define USHELL_STARTUP_VCP_OSAL_PORT_NAME "uShellVcpOsal"
+        #define USHELL_STARTUP_OSAL_PORT_NAME     "uShellOsal"
     #endif
     /* Add definition for other ports here: */
     // ... //
