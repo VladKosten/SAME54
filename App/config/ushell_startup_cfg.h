@@ -42,7 +42,7 @@ extern "C" {
 #define USHELL_STARTUP_NAME          "uShell"
 
 /**
- * @brief uShell VCP name by default
+ * \brief uShell VCP name by default
  */
 #define USHELL_VCP_NAME              "uShellVcp"
 
