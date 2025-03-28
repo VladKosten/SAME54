@@ -12,7 +12,7 @@
 #include <hal_init.h>
 
 /*! The buffer size for USART */
-#define SERVICE_PORT_BUFFER_SIZE 16
+#define SERVICE_PORT_BUFFER_SIZE 256
 
 struct usart_async_descriptor SERVICE_PORT;
 

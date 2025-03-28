@@ -16,7 +16,7 @@ extern "C" {
  */
 
 /**
- * @def USHELL_ASSERT
+ * @def USHELL_VCP_ASSERT
  * @brief Assert macro definition.
  * @param cond Condition to assert.
  */

@@ -118,6 +118,7 @@ static void appStartupTask(void* param)
         /* Application startup delay */
         vTaskDelay(pdMS_TO_TICKS(APP_STARTUP_DELAY_MS));
 
+        /* Shell startup */
         status = UShellStartup();
         if (status != 0)
         {

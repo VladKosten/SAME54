@@ -38,6 +38,16 @@
         "ushell_startup.h": "c",
         "ushell.h": "c",
         "ushell_startup_cfg.h": "c",
-        "ushell_hal_asf.h": "c"
+        "ushell_hal_asf.h": "c",
+        "event_groups.h": "c",
+        "array": "c",
+        "string_view": "c",
+        "initializer_list": "c",
+        "utility": "c",
+        "ushell_osal_freertos.h": "c",
+        "deque": "c",
+        "string": "c",
+        "vector": "c",
+        "iterator": "c"
     }
 }
