@@ -48,6 +48,7 @@
         "deque": "c",
         "string": "c",
         "vector": "c",
-        "iterator": "c"
+        "iterator": "c",
+        "span": "c"
     }
 }

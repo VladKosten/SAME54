@@ -46,9 +46,8 @@ extern "C" {
  */
 #define USHELL_VCP_NAME              "uShellVcp"
 
-#define USHELL_STARTUP_AUTH_IS_EN    false
-#define USHELL_STARTUP_ECHO_IS_EN    false
-#define USHELL_STARTUP_HISTORY_IS_EN false
+#define USHELL_STARTUP_AUTH_IS_EN    true
+#define USHELL_STARTUP_HISTORY_IS_EN true
 #define USHELL_STARTUP_PROMPT_IS_EN  false
 
 /**
