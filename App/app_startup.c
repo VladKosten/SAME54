@@ -129,8 +129,7 @@ static void appStartupTask(void* param)
         /* --------------- DO NOT TOUCH IT ! ----------------*/
         /* Set the Application init completion flag */
         AppInitFlag = true;
-        printf("Application startup completed !\r\n");
-
+        
         /* Delete the startup task */
         AppStartupTaskHandle = NULL;
         vTaskDelete(NULL);
