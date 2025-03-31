@@ -48,7 +48,7 @@ extern "C" {
 
 #define USHELL_STARTUP_AUTH_IS_EN    true
 #define USHELL_STARTUP_HISTORY_IS_EN true
-#define USHELL_STARTUP_PROMPT_IS_EN  false
+#define USHELL_STARTUP_PROMPT_IS_EN  true
 
 /**
  * \brief Define the OSAL port type
