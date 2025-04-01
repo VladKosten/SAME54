@@ -49,6 +49,8 @@
         "string": "c",
         "vector": "c",
         "iterator": "c",
-        "span": "c"
+        "span": "c",
+        "ushell_cfg.h": "c",
+        "ushell_hal.h": "c"
     }
 }
